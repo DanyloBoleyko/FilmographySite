@@ -15,6 +15,7 @@ Site which helps people to see producers' films, actors and films where they sta
 3. Install all required packages to venv:
     ```
     pip install -r requirements.txt
+    pip freeze > requirements.txt
     ```
 4. Run server:
     ```
