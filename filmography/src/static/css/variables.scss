@@ -18,3 +18,24 @@
 	--dark-gray: #333;
 	--black: #111;
 }
+
+$colors: (
+	'success-light': var(--success-light),
+	'success': var(--success),
+	'success-dark': var(--success-dark),
+
+	'error-light': var(--error-light),
+	'error': var(--error),
+	'error-dark': var(--error-dark),
+
+	'primary-light': var(--primary-light),
+	'primary': var(--primary),
+	'primary-dark': var(--primary-dark),
+
+	'white': var(--white),
+	'silver': var(--silver),
+	'light-gray': var(--light-gray),
+	'gray': var(--gray),
+	'dark-gray': var(--dark-gray),
+	'black': var(--black),
+);
