@@ -1,3 +1,5 @@
 venv
 .idea
 /filmography/static/
+/filmography/src/migrations/
+

@@ -48,9 +48,9 @@ $border-widths: (
 		border-width: $width;
 	}
 
-	/*@each $abbr, $dir in $directions {
+	@each $abbr, $dir in $directions {
 		.border-#{$abbr}-width-#{$size} {
 			border-#{$dir}-width: $width;
 		}
-	}*/
+	}
 }
