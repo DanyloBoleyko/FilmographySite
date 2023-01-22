@@ -1,4 +1,27 @@
-@use 'variables' as *;
+$directions: (
+	't': top,
+	'r': right,
+	'b': bottom,
+	'l': left
+);
+
+$border-widths: (
+	'1': 1px,
+	'2': 2px,
+	'3': 4px,
+);
+
+@mixin border($side: '', $color: transparent, $width: 1px, $style: solid) {
+	@if $side == '' {
+		border-width: $width;
+		border-style: $style;
+		border-color: $color;
+	} @else {
+		border-#{$side}-width: $width;
+		border-#{$side}-style: $style;
+		border-#{$side}-color: $color;
+	}
+}
 
 @each $name, $color in $colors {
 	.#{$name} {
@@ -10,6 +33,24 @@
 	}
 
 	.border--#{$name} {
-		border-color: $color;
+		@include border('', $color)
+	}
+
+	@each $abbr, $dir in $directions {
+		.border-#{$abbr}--#{$name} {
+			@include border($dir, $color)
+		}
+	}
+}
+
+@each $size, $width in $border-widths {
+	.border-width-#{$size} {
+		border-width: $width;
+	}
+
+	@each $abbr, $dir in $directions {
+		.border-#{$abbr}-width-#{$size} {
+			border-#{$dir}-width: $width;
+		}
 	}
 }

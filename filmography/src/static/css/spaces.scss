@@ -5,7 +5,7 @@ $spaces: (
 	'n3': -12px,
 	'n2': -8px,
 	'n1': -4px,
-	'0': 0px,
+	'0': 0,
 	'1': 4px,
 	'2': 8px,
 	'3': 12px,
@@ -15,11 +15,23 @@ $spaces: (
 );
 
 $sides: (
-	//'a': ''
+	'a': '',
+	'x': '-inline',
+	'y': '-block',
+	't': '-top',
+	'r': '-right',
+	'b': '-bottom',
+	'l': '-left',
 );
 
 @each $name, $space in $spaces {
-	.#{$name} {
+	@each $abbr, $side in $sides {
+		.m#{$abbr}-#{$name} {
+			margin#{$side}: $space;
+		}
 
+		.p#{$abbr}-#{$name} {
+			padding#{$side}: $space;
+		}
 	}
 }
