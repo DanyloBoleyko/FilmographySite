@@ -12,6 +12,7 @@
 	--primary-dark: #154fb2;
 
 	--white: #fff;
+	--dirty-white: #ccc;
 	--silver: #aaa;
 	--light-gray: #777;
 	--gray: #555;
@@ -33,6 +34,7 @@ $colors: (
 	'primary-dark': var(--primary-dark),
 
 	'white': var(--white),
+	'dirty-white': var(--dirty-white),
 	'silver': var(--silver),
 	'light-gray': var(--light-gray),
 	'gray': var(--gray),

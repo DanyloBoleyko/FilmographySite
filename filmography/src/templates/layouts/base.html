@@ -8,16 +8,16 @@
 </head>
 <body>
     {% block header %}
-        <header class="main-header border-b--silver align-center position-sticky black pa-6 white--text"
+        <header class="main-header select-none border-b--silver align-center position-sticky black pa-6 white--text"
                 style="top: 0"
         >
-            <a class="serif header-5">FILMOGRAPHY</a>
+            <a class="serif header-5 text-decoration-none white--text" href="/">FILMOGRAPHY</a>
 
-            <!--<nav class="ml-6">
-                <a>link</a>
-                <a>link</a>
-                <a>link</a>
-            </nav>-->
+            <nav class="ml-5">
+                {% for link in links %}
+                    <a class="header-link pa-3" href="{{ link.url }}">{{ link.name }}</a>
+                {% endfor %}
+            </nav>
         </header>
     {% endblock %}
 

@@ -1,3 +1,13 @@
 header.main-header {
 	height: 32px;
 }
+
+.header-link {
+	text-decoration: none;
+	color: var(--white);
+	@include transition(color .2s);
+
+	&:hover {
+		color: var(--dirty-white);
+	}
+}
