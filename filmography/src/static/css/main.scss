@@ -1,5 +1,12 @@
 @import 'reset';
 @import 'variables';
+
+@import 'mixins/crossbrowsers';
+
 @import 'colors';
+@import 'spaces';
+@import 'text';
+@import 'positions';
 
 @import 'components/header';
+@import 'components/content';

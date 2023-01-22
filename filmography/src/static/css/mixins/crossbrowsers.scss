@@ -1,0 +1,75 @@
+@mixin rotate($degree) {
+	-webkit-transform: rotate($degree);
+	-moz-transform: rotate($degree);
+	-ms-transform: rotate($degree);
+	-o-transform: rotate($degree);
+	transform: rotate($degree);
+}
+
+@mixin perspective($viewerDistance) {
+	-webkit-perspective: $viewerDistance;
+	perspective: $viewerDistance;
+}
+
+@mixin transform($transformParams) {
+	-webkit-transform: $transformParams;
+	-moz-transform: $transformParams;
+	-ms-transform: $transformParams;
+	-o-transform: $transformParams;
+	transform: $transformParams;
+}
+
+@mixin transformOrigin($transformOrigin) {
+	-webkit-transform-origin: $transformOrigin;
+	transform-origin: $transformOrigin;
+}
+
+@mixin transition($params...) {
+	-webkit-transition: $params;
+	-moz-transition: $params;
+	-o-transition: $params;
+	transition: $params;
+}
+
+@mixin box-sizing($param) {
+	-webkit-box-sizing: $param;
+	-moz-box-sizing: $param;
+	box-sizing: $param;
+}
+
+@mixin border-radius($radius) {
+	-webkit-border-radius: $radius;
+	border-radius: $radius;
+	background-clip: padding-box;
+}
+
+@mixin user-select($value) {
+	-webkit-user-select: $value;
+	-moz-user-select: $value;
+	-ms-user-select: $value;
+	user-select: $value;
+}
+
+@mixin box-shadow($shadow) {
+	-moz-box-shadow: $shadow;
+	-webkit-box-shadow: $shadow;
+	box-shadow: $shadow;
+}
+
+@mixin flex-direction($direction) {
+	-ms-flex-direction: $direction;
+	-webkit-flex-direction: $direction;
+	flex-direction: $direction;
+}
+
+@mixin background-image(
+	$img-url: 'http://placehold.it/800x600',
+	$bg-size: cover,
+	$bg-pos: 'center center',
+	$bg-repeat: 'no-repeat'
+) {
+	background-image: url($img-url);
+	background-size: $bg-size;
+	background-repeat: unquote($bg-repeat);
+	background-position: unquote($bg-pos);
+}

@@ -1,0 +1,63 @@
+%flex {
+	display: flex;
+}
+
+.flex {
+	@extend %flex;
+}
+
+$flex-justify: (
+	'start': start,
+	'center': center,
+	'end': end,
+	'between': space-between,
+	'around': space-around,
+	'stretch': stretch,
+);
+
+@each $abbr, $pos in $flex-justify {
+	.justify-#{$abbr} {
+		@extend %flex;
+		justify-content: $pos;
+	}
+}
+
+$flex-align: (
+	'start': start,
+	'center': center,
+	'end': end,
+	'baseline': baseline,
+);
+
+@each $abbr, $pos in $flex-align {
+	.align-#{$abbr} {
+		@extend %flex;
+		align-items: $pos;
+	}
+}
+
+.flex-col {
+	@include flex-direction(column);
+}
+
+.flex-row {
+	@include flex-direction(row);
+}
+
+.position-sticky {
+	position: sticky;
+	position: -webkit-sticky;
+}
+
+.position-absolute {
+	position: absolute;
+}
+
+.position-fixed {
+	position: fixed;
+	position: -ms-device-fixed;
+}
+
+.position-relative {
+	position: relative;
+}

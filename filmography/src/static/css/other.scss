@@ -1,0 +1,22 @@
+$overflows: (
+	'scroll': scroll,
+	'hidden': hidden,
+	'clip': clip,
+);
+
+@each $abbr, $overflow in $overflows {
+
+	.overflow-#{$abbr} {
+		overflow: $overflow;
+	}
+
+	@each $dir in (x, y) {
+		.overflow-#{$dir}-#{$abbr} {
+			overflow-#{$dir}: $overflow;
+		}
+	}
+}
+
+.select-none {
+	@include user-select(none);
+}
