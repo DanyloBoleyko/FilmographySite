@@ -20,3 +20,19 @@ $overflows: (
 .select-none {
 	@include user-select(none);
 }
+
+.fit-cover {
+	object-fit: cover;
+}
+
+$rounded: (
+	'1': 2px,
+	'2': 4px,
+	'3': 6px,
+);
+
+@each $abbr, $radius in $rounded {
+	.rounded-#{$abbr} {
+		border-radius: $radius;
+	}
+}

@@ -1,5 +1,21 @@
 {% extends 'layouts/base.html' %}
 
 {% block content %}
-    text
+    <h1 class="font-weight-bold serif">Films</h1>
+    <hr class="mb-6">
+
+    {% for film in films %}
+        <div class="flex">
+            <div class="mr-5" style="height: 300px; min-width: 200px">
+                <img src="media/{{ film.poster }}"
+                     alt="Poster of {{ film.name }}"
+                     class="fit-cover rounded-2"
+                >
+            </div>
+            <div>
+                <h2 class="mb-5 header-5 font-weight-medium">{{ film.name }}</h2>
+                <p class="body-2">{{ film.description }}</p>
+            </div>
+        </div>
+    {% endfor %}
 {% endblock %}

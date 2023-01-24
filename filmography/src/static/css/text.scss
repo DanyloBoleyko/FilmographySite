@@ -47,3 +47,21 @@ h6, .header-6 {
 .text-decoration-none {
 	text-decoration: none;
 }
+
+$font-weights: (
+	'thin': 100,
+	'extra-light': 200,
+	'light': 300,
+	'normal': 400,
+	'medium': 500,
+	'semi-bold': 600,
+	'bold': 700,
+	'extra-bold': 800,
+	'black': 900,
+);
+
+@each $name, $weight in $font-weights {
+	.font-weight-#{$name} {
+		font-weight: $weight;
+	}
+}
