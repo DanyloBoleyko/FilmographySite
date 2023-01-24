@@ -1,6 +1,6 @@
 from django.db import models
 
-# Create your models here.
+from src.models.actor import Actor
 
 
 class Genres(models.TextChoices):
@@ -24,17 +24,17 @@ class Film(models.Model):
     name = models.CharField(max_length=255)
     description = models.CharField(blank=True, max_length=1024)
     plot = models.CharField(blank=True, max_length=4092)
-    rating = models.FloatField()
+    rating = models.FloatField(default=0)
     producers = models.CharField(max_length=255)
     directors = models.CharField(max_length=255)
-    actors = models.CharField(max_length=255)
-    poster = models.ImageField(upload_to="photos/%Y-%m-%d/")
+    actors = models.ManyToManyField(Actor)
+    poster = models.ImageField(upload_to="photos/films/%Y-%m-%d/")
     genre = models.CharField(
         max_length=255,
         choices=Genres.choices,
         default=Genres.NONE,
     )
-    age_rating = models.FloatField()
+    age_rating = models.FloatField(blank=True)
     announced_at = models.DateField(blank=True)
     published_at = models.DateField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
