@@ -36,3 +36,37 @@ $rounded: (
 		border-radius: $radius;
 	}
 }
+
+.background-pattern {
+	position: relative;
+
+	&:after {
+		content: '';
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		opacity: .03;
+		background-image: url('../pattern.png');
+		background-size: 128px;
+		background-position: center;
+		background-repeat: repeat repeat;
+	}
+}
+
+.focus-light, .focus-dark {
+	*:focus-visible {
+		outline-offset: 2px;
+		outline-width: 1.5px;
+		outline-style: solid;
+	}
+}
+
+.focus-light *:focus-visible {
+	outline-color: var(--white);
+}
+
+.focus-dark *:focus-visible {
+	outline-color: var(--black);
+}

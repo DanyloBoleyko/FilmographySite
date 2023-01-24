@@ -13,8 +13,16 @@
                 >
             </div>
             <div>
-                <h2 class="mb-5 header-5 font-weight-medium">{{ film.name }}</h2>
-                <p class="body-2">{{ film.description }}</p>
+                <h2 class="mb-3 header-5 font-weight-medium">{{ film.name }}</h2>
+                <p class="mb-3 body-2 line-clamp-5">{{ film.description }}</p>
+                <div class="flex mb-3">
+                    {% for genre in film.genres.all %}
+                        <button class="chip border--dirty-white">{{ genre.genre }}</button>
+                    {% endfor %}
+                </div>
+                <div class="flex">
+                    <button class="btn">Details</button>
+                </div>
             </div>
         </div>
     {% endfor %}

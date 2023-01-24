@@ -1,0 +1,23 @@
+button.chip, .chip {
+	border-radius: 2px;
+	padding: 4px 8px;
+	font-size: 12px;
+	letter-spacing: .6px;
+	background-color: var(--snowy-white);
+}
+
+.chip + .chip {
+	margin-left: 8px;
+}
+
+button.chip {
+	transition: background-color .2s, transform .2s;
+
+	&:hover {
+		background-color: var(--dirty-white);
+	}
+
+	&:active {
+		transform: scale(0.98);
+	}
+}

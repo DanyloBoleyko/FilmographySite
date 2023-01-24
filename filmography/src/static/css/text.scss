@@ -14,10 +14,13 @@ html, .sans-serif {
 
 .body-2 {
 	font-size: 16px;
+	line-height: 1.5;
+	letter-spacing: .4px;
 }
 
 .caption {
 	font-size: 12px;
+	letter-spacing: .6px;
 }
 
 h1, .header-1 {
@@ -63,5 +66,19 @@ $font-weights: (
 @each $name, $weight in $font-weights {
 	.font-weight-#{$name} {
 		font-weight: $weight;
+	}
+}
+
+%line-clamp {
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 1;
+	overflow: hidden;
+}
+
+@each $clamp in (1, 2, 3, 4, 5) {
+	.line-clamp-#{$clamp} {
+		@extend %line-clamp;
+		-webkit-line-clamp: $clamp;
 	}
 }
