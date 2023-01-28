@@ -14,7 +14,7 @@
                 style="top: 0"
         >
             <a class="d-flex rounded-2 align-center serif header-5 text-decoration-none white--text" href="/">
-                <svg width="24" fill="white" class="pa-2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 24"  xml:space="preserve">
+                <svg width="24" fill="currentColor" class="pa-2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 24" xml:space="preserve">
                     <style type="text/css">
                         .st0 {
                             fill-rule: evenodd;
@@ -38,11 +38,39 @@
                 <span class="pl-1 pr-2">FILMOGRAPHY</span>
             </a>
 
-            <nav class="ml-4">
+            <nav class="ml-4 flex-no-wrap">
                 {% for link in links %}
                     <a class="header-link rounded-2 py-3 px-4" href="{{ link.url }}">{{ link.name }}</a>
                 {% endfor %}
             </nav>
+
+            <div class="flex-grow-1"></div>
+
+            <label class="align-center pa-3">
+                <input class="search-input mr-4" type="text" placeholder="Search">
+                <svg height="24" width="24" fill="currentColor" class="header-btn ma-n3 pa-3 cursor-pointer" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 24" xml:space="preserve">
+                    <path class="st0" d="M10,4c0,0.3-0.2,0.5-0.5,0.5c-2.8,0-5,2.2-5,5C4.5,9.8,4.3,10,4,10S3.5,9.8,3.5,9.5c0-3.3,2.7-6,6-6C9.8,3.5,10,3.7,10,4z
+                         M22.8,22.8c-0.3,0.3-0.6,0.4-0.9,0.4c-0.3,0-0.7-0.1-0.9-0.4l-3.9-3.9c-0.1-0.1-0.2-0.3-0.3-0.4c0,0,0-0.1,0-0.1
+                        c0-0.1-0.1-0.2-0.1-0.3c0,0,0-0.1,0-0.1c0-0.1,0-0.3,0.1-0.4c0,0,0,0,0-0.1c0,0,0,0,0,0l-1.1-1.1c-1.7,1.5-3.8,2.3-6,2.3
+                        c-0.5,0-1,0-1.5-0.1c-3.7-0.6-6.7-3.6-7.4-7.4C0.1,8.1,1.1,5.2,3.1,3.1s4.9-3,7.9-2.5c3.7,0.6,6.7,3.6,7.4,7.4
+                        c0.5,2.8-0.3,5.5-2.2,7.5l1.1,1.1c0,0,0,0,0,0c0,0,0,0,0.1,0c0.1,0,0.3-0.1,0.4-0.1c0,0,0.1,0,0.1,0c0.1,0,0.2,0,0.3,0.1
+                        c0,0,0.1,0,0.1,0c0.1,0.1,0.3,0.1,0.4,0.3c0,0,0,0,0,0l3.9,3.9C23.3,21.4,23.3,22.2,22.8,22.8z M17.4,8.1c-0.5-3.3-3.2-6-6.5-6.5
+                        C8.2,1.2,5.7,2,3.8,3.8c-1.8,1.8-2.7,4.4-2.2,7c0.5,3.3,3.2,6,6.5,6.5c2.6,0.4,5.2-0.4,7-2.2S17.8,10.8,17.4,8.1z"
+                    ></path>
+                </svg>
+            </label>
+
+            <a class="header-link align-center rounded-2 py-3 px-4" href="#">
+                <svg height="24" width="24" fill="currentColor" class="mr-2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 24" xml:space="preserve">
+                    <path class="st0" d="M12,0C5.4,0,0,5.4,0,12c0,3.1,1.2,5.9,3.1,8c0.1,0.1,0.2,0.3,0.4,0.4c0.1,0.1,0.2,0.2,0.4,0.4c0.7,0.6,1.5,1.2,2.3,1.7
+                        c0.3,0.2,0.7,0.3,1,0.5c0.4,0.2,0.9,0.4,1.4,0.5C9.7,23.8,10.8,24,12,24s2.3-0.2,3.4-0.5c0.5-0.1,0.9-0.3,1.4-0.5
+                        c0.3-0.2,0.7-0.3,1-0.5c0.8-0.5,1.6-1,2.3-1.7c0.1-0.1,0.3-0.2,0.4-0.4c0.1-0.1,0.2-0.3,0.4-0.4c1.9-2.1,3.1-4.9,3.1-8
+                        C24,5.4,18.6,0,12,0z M20.4,19.1C19.2,17.1,17,16,15,16H9c-2,0-4.2,1.1-5.4,3.1C2,17.2,1,14.7,1,12C1,5.9,5.9,1,12,1s11,4.9,11,11
+                        C23,14.7,22,17.2,20.4,19.1z M16.5,9c0,2.7-1.4,5.5-4.5,5.5S7.5,11.7,7.5,9c0-2.5,2-4.5,4.5-4.5S16.5,6.5,16.5,9z"
+                    ></path>
+                </svg>
+                Profile
+            </a>
         </header>
     {% endblock %}
 

@@ -3,12 +3,46 @@ header.main-header {
 	z-index: 10;
 }
 
-.header-link {
+.header-link, .header-btn {
 	text-decoration: none;
 	color: var(--white);
-	@include transition(color .2s);
+	@include transition(color .2s, transform .2s);
 
 	&:hover {
 		color: var(--dirty-white);
+	}
+
+	&:active {
+		transform: scale(var(--btn-push-scale));
+	}
+}
+
+.main-header {
+	.search-input {
+		height: 32px;
+		width: 0;
+		flex-shrink: 1;
+		border-radius: 2px;
+		padding-inline: 0;
+
+		font-size: 16px;
+		line-height: 1.5;
+		letter-spacing: .4px;
+
+		color: var(--white);
+		background-color: transparent;
+		border-bottom: solid 1px white;
+
+		@include transition(all .2s);
+
+		&:focus, &:not(:placeholder-shown) {
+			outline: none;
+			width: 160px;
+			padding-inline: 8px;
+		}
+
+		&::placeholder {
+			color: var(--light-gray)
+		}
 	}
 }

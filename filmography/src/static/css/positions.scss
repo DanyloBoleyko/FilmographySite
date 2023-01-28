@@ -37,11 +37,22 @@ $flex-align: (
 }
 
 .flex-col {
+	@extend %flex;
 	@include flex-direction(column);
 }
 
 .flex-row {
+	@extend %flex;
 	@include flex-direction(row);
+}
+
+.flex-no-wrap {
+	@extend %flex;
+	flex-wrap: nowrap;
+}
+
+.flex-grow-1 {
+	flex-grow: 1;
 }
 
 .position-sticky {

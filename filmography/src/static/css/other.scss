@@ -70,3 +70,7 @@ $rounded: (
 .focus-dark *:focus-visible {
 	outline-color: var(--black);
 }
+
+.cursor-pointer {
+	cursor: pointer;
+}
