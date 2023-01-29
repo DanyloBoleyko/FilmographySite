@@ -1,0 +1,29 @@
+<header class="main-header focus-light select-none border-b--gray align-center position-sticky black pa-6 white--text"
+        style="top: 0"
+>
+    <a class="d-flex rounded-2 align-center serif header-5 text-decoration-none white--text"
+       href="{% url "home" %}"
+    >
+        {% include "components/icons/logo_icon.html" with class="pa-2" %}
+        <span class="pl-1 pr-2">FILMOGRAPHY</span>
+    </a>
+
+    <nav class="ml-4 flex-no-wrap">
+        <a class="header-link rounded-2 py-3 px-4" href="{% url "home" %}">News</a>
+        <a class="header-link rounded-2 py-3 px-4" href="{% url "home" %}">Films</a>
+        <a class="header-link rounded-2 py-3 px-4" href="{% url "home" %}">Actors</a>
+        <a class="header-link rounded-2 py-3 px-4" href="{% url "home" %}">Producers</a>
+    </nav>
+
+    <div class="flex-grow-1"></div>
+
+    <label class="align-center pa-3">
+        <input class="search-input" type="text" placeholder="Search">
+        {% include "components/icons/search_icon.html" with class="header-btn ma-n3 pa-3 cursor-pointer" %}
+    </label>
+
+    <a class="header-link align-center rounded-2 py-3 px-4" href="#">
+        {% include "components/icons/account_icon.html" with class="mr-2" %}
+        Profile
+    </a>
+</header>

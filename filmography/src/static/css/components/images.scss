@@ -1,0 +1,75 @@
+.portrait {
+	position: relative;
+
+	& > img {
+		filter: contrast(1.1);
+	}
+
+	&:after {
+		content: '';
+		pointer-events: none;
+		position: absolute;
+		z-index: 1;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		mix-blend-mode: color-dodge;
+		background-color: #222;
+	}
+}
+
+.portrait-gray {
+	position: relative;
+
+	& > img {
+		filter: contrast(1.5) grayscale(1);
+	}
+
+	&:after {
+		content: '';
+		pointer-events: none;
+		position: absolute;
+		z-index: 1;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		mix-blend-mode: color-dodge;
+		background-color: #333;
+	}
+}
+
+.gallery-scroll {
+	width: var(--page-width-expanded);
+	padding-inline: calc(var(--page-width-expanded) / 10);
+	box-sizing: border-box;
+
+	display: grid;
+	grid-auto-flow: column;
+	grid-auto-columns: 25%;
+	gap: 12px;
+
+	overflow-x: auto;
+	scroll-snap-type: x mandatory;
+	scroll-padding: 24px;
+	overscroll-behavior-x: contain;
+
+	@include mask-image(linear-gradient(
+			to right,
+			rgba(0, 0, 0, 0),
+			rgba(0, 0, 0, 1) 10%,
+			rgba(0, 0, 0, 1) 90%,
+			rgba(0, 0, 0, 0)
+	));
+
+	& > * {
+		scroll-snap-align: center;
+	}
+
+	.gallery-card {
+		/*float: left;
+		margin-inline: 12px;
+		display: block !important;*/
+	}
+}

@@ -5,25 +5,6 @@
     <hr class="mb-6">
 
     {% for film in films %}
-        <div class="flex">
-            <div class="mr-5" style="height: 300px; min-width: 200px">
-                <img src="media/{{ film.poster }}"
-                     alt="Poster of {{ film.name }}"
-                     class="fit-cover rounded-2 border--dirty-white"
-                >
-            </div>
-            <div>
-                <h2 class="mb-3 header-5 font-weight-medium">{{ film.name }}</h2>
-                <p class="mb-3 body-2 line-clamp-5">{{ film.description }}</p>
-                <div class="flex mb-3">
-                    {% for genre in film.genres.all %}
-                        <button class="chip border--dirty-white">{{ genre.genre }}</button>
-                    {% endfor %}
-                </div>
-                <div class="flex">
-                    <button class="btn">Details</button>
-                </div>
-            </div>
-        </div>
+        {% include "components/film_card.html" with film=film %}
     {% endfor %}
 {% endblock %}

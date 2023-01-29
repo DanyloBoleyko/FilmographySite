@@ -1,0 +1,97 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+    <h1 class="font-weight-bold serif">{{ film.name }}</h1>
+    <hr class="mb-6">
+
+    <div class="mb-4">
+        <div class="float-left flex-col mr-5 mb-4" style="max-width: 250px">
+            <img src="{{ film.poster.url|default:"" }}"
+                 alt="Poster of {{ film.name|default:"No title" }}"
+                 class="mb-4 fit-cover rounded-2 border--dirty-white"
+                 style="height: 375px"
+            >
+            <div class="grid caption" style="grid-template-columns: 90px 1fr; gap: 12px">
+                <strong class="font-weight-bold">Directed by</strong>
+                {% if film.directors.all %}
+                    <div class="flex-col">
+                        {% for director in film.directors.all %}
+                            <a class="link mr-auto" href="{% url "person_details" key=director.id %}">
+                                {{ director.first_name }} {{ director.last_name }}
+                            </a>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <span>-</span>
+                {% endif %}
+
+                <strong class="font-weight-bold">Screenplay by</strong>
+                {% if film.screenwriters.all %}
+                    <div class="flex-col">
+                        {% for screenwriter in film.screenwriters.all %}
+                            <a class="link mr-auto" href="{% url "person_details" key=screenwriter.id %}">
+                                {{ screenwriter.first_name }} {{ screenwriter.last_name }}
+                            </a>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <span>-</span>
+                {% endif %}
+
+                <strong class="font-weight-bold">Produced by</strong>
+                {% if film.producers.all %}
+                    <div class="flex-col">
+                        {% for producer in film.producers.all %}
+                            <a class="link mr-auto" href="{% url "person_details" key=producer.id %}">
+                                {{ producer.first_name }} {{ producer.last_name }}
+                            </a>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <span>-</span>
+                {% endif %}
+
+                <strong class="font-weight-bold">Starring</strong>
+                {% if film.starring_list %}
+                    <div class="flex-col">
+                        {% for starring in film.starring_list %}
+                            <a class="link mr-auto" href="{% url "person_details" key=starring.id %}">
+                                {{ starring.first_name }} {{ starring.last_name }}
+                            </a>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <span>-</span>
+                {% endif %}
+
+                <strong class="font-weight-bold">Age rating:</strong>
+                {% if film.age_rating %}
+                    <span>{{ film.age_rating }}</span>
+                {% else %}
+                    <span>-</span>
+                {% endif %}
+
+                <strong class="font-weight-bold">Release date:</strong>
+                {% if film.release_date %}
+                    <span>{{ film.release_date|date:"m/d/Y" }}</span>
+                {% else %}
+                    <span>-</span>
+                {% endif %}
+            </div>
+        </div>
+        <h2 class="mb-3 header-5 font-weight-medium hidden">Description</h2>
+        {% for paragraph in film.description_as_list %}
+            <p class="mb-3 body-2 text-indent text-justify">{{ paragraph }}</p>
+        {% endfor %}
+        <div class="flex mb-3">
+            {% for genre in film.genres.all %}
+                <button class="chip border--dirty-white">{{ genre.genre }}</button>
+            {% endfor %}
+        </div>
+        <hr class="my-4">
+        <h2 class="mb-3 header-5 text-indent font-weight-medium">Plot</h2>
+        {% for paragraph in film.plot_as_list %}
+            <p class="mb-4 body-2 text-indent text-justify">{{ paragraph }}</p>
+        {% endfor %}
+    </div>
+{% endblock %}

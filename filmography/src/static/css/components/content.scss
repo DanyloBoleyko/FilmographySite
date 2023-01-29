@@ -1,6 +1,8 @@
 .main-content {
 	z-index: 1;
 	background-color: var(--white);
-	width: 700px;
+	max-width: var(--page-width);
+	min-width: var(--page-width);
+	box-sizing: border-box;
 	height: 2000px
 }

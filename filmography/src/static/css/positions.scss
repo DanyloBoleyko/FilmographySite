@@ -55,6 +55,18 @@ $flex-align: (
 	flex-grow: 1;
 }
 
+.flex-shrink-1 {
+	flex-shrink: 1;
+}
+
+%grid {
+	display: grid;
+}
+
+.grid {
+	@extend %grid;
+}
+
 .position-sticky {
 	position: sticky;
 	position: -webkit-sticky;
@@ -71,4 +83,8 @@ $flex-align: (
 
 .position-relative {
 	position: relative;
+}
+
+.float-left {
+	float: left;
 }

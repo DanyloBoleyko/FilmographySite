@@ -2,20 +2,20 @@ from django.db import models
 
 
 class Genres(models.TextChoices):
-    NONE = 'Undefined'
-    ACTION = 'Action'
-    ADVENTURE = 'Adventure'
-    COMEDY = 'Comedy'
-    DRAMA = 'Drama'
-    FANTASY = 'Fantasy'
-    HORROR = 'Horror'
-    MUSICALS = 'Musicals'
-    MYSTERY = 'Mystery'
-    ROMANCE = 'Romance'
-    SCIENCE_FICTION = 'Science fiction'
-    SPORTS = 'Sports'
-    THRILLER = 'Thriller'
-    WESTERN = 'Western'
+    NONE = 'undefined'
+    ACTION = 'action'
+    ADVENTURE = 'adventure'
+    COMEDY = 'comedy'
+    DRAMA = 'drama'
+    FANTASY = 'fantasy'
+    HORROR = 'horror'
+    MUSICALS = 'musicals'
+    MYSTERY = 'mystery'
+    ROMANCE = 'romance'
+    SCIENCE_FICTION = 'science_fiction'
+    SPORTS = 'sports'
+    THRILLER = 'thriller'
+    WESTERN = 'western'
 
 
 class Genre(models.Model):
@@ -24,3 +24,6 @@ class Genre(models.Model):
         choices=Genres.choices,
         default=Genres.NONE,
     )
+
+    def __str__(self):
+        return f"{self.genre}"

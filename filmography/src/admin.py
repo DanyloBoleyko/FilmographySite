@@ -1,15 +1,13 @@
 from django.contrib import admin
 
 from src.models.film import Film
+from src.models.franchise import Franchise
 from src.models.genre import Genre
-from src.models.actor import Actor
-from src.models.director import Director
-from src.models.producer import Producer
-from src.models.related_films import RelatedFilms
+from src.models.human import Human
+from src.models.porfession import Profession
 
 admin.site.register(Film)
+admin.site.register(Franchise)
 admin.site.register(Genre)
-admin.site.register(Actor)
-admin.site.register(Director)
-admin.site.register(Producer)
-admin.site.register(RelatedFilms)
+admin.site.register(Human)
+admin.site.register(Profession)

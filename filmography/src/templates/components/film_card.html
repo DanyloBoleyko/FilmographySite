@@ -1,0 +1,22 @@
+<div class="flex">
+    <div class="mr-5" style="height: 300px; min-width: 200px">
+        <img src="{{ film.poster.url|default:"" }}"
+             alt="Poster of {{ film.name|default:"No title" }}"
+             class="fit-cover rounded-2 border--dirty-white"
+        >
+    </div>
+    <div>
+        <h2 class="mb-3 header-5 font-weight-medium">{{ film.name|default:"No title" }}</h2>
+        {% for paragraph in film.description_as_list %}
+            <p class="mb-3 body-2 text-indent text-justify line-clamp-5">{{ paragraph }}</p>
+        {% endfor %}
+        <div class="flex mb-3">
+            {% for genre in film.genres.all %}
+                <button class="chip border--dirty-white">{{ genre.genre }}</button>
+            {% endfor %}
+        </div>
+        <div class="flex">
+            <a class="btn" href="{% url "film_details" key=1 %}">Details</a>
+        </div>
+    </div>
+</div>

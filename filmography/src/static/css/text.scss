@@ -20,7 +20,8 @@ html, .sans-serif {
 
 .caption {
 	font-size: 12px;
-	letter-spacing: .6px;
+	line-height: 1.2;
+	letter-spacing: .4px;
 }
 
 h1, .header-1 {
@@ -49,6 +50,14 @@ h6, .header-6 {
 
 .text-decoration-none {
 	text-decoration: none;
+}
+
+.text-justify {
+	text-align: justify;
+}
+
+.text-center {
+	text-align: center;
 }
 
 $font-weights: (
@@ -81,4 +90,8 @@ $font-weights: (
 		@extend %line-clamp;
 		-webkit-line-clamp: $clamp;
 	}
+}
+
+.text-indent {
+	//text-indent: 24px;
 }

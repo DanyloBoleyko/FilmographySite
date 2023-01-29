@@ -1,0 +1,63 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+    <h1 class="font-weight-bold serif">{{ human.first_name }} {{ human.last_name }}</h1>
+    <hr class="mb-6">
+
+    <div class="mb-4">
+        {% if human.image %}
+            <div class="float-left flex-col mr-5 mb-3 portrait" style="max-width: 175px">
+                <img src="{{ human.image.url|default:"" }}"
+                     alt="Poster of {{ film.name|default:"No title" }}"
+                     class="fit-cover rounded-2 border--dirty-white"
+                     style="max-height: 250px"
+                >
+            </div>
+        {% endif %}
+        <h2 class="mb-3 header-5 font-weight-medium hidden">Biography</h2>
+        {% for paragraph in human.biography_as_list %}
+            <p class="mb-3 body-2 text-indent text-justify">{{ paragraph }}</p>
+            <hr class="my-4">
+        {% endfor %}
+        {% if films_actor %}
+            <h2 class="mb-3 header-5 font-weight-medium">Actor in</h2>
+            <div style="left: 0; right: 0" class="position-absolute gallery-scroll mx-auto">
+                {% for film in films_actor %}
+                    {% include 'components/film_card_vertical.html' with film=film %}
+                {% endfor %}
+            </div>
+        {% endif %}
+        {% if films_voice_actor %}
+            <h2 class="mb-3 header-5 font-weight-medium">Voice actor in</h2>
+            <div style="left: 0; right: 0" class="position-absolute gallery-scroll mx-auto">
+                {% for film in films_voice_actor %}
+                    {% include 'components/film_card_vertical.html' with film=film %}
+                {% endfor %}
+            </div>
+        {% endif %}
+        {% if films_director %}
+            <h2 class="mb-3 header-5 font-weight-medium">Director of</h2>
+            <div style="left: 0; right: 0" class="position-absolute gallery-scroll mx-auto">
+                {% for film in films_director %}
+                    {% include 'components/film_card_vertical.html' with film=film %}
+                {% endfor %}
+            </div>
+        {% endif %}
+        {% if films_producer %}
+            <h2 class="mb-3 header-5 font-weight-medium">Producer of</h2>
+            <div style="left: 0; right: 0" class="position-absolute gallery-scroll mx-auto">
+                {% for film in films_producer %}
+                    {% include 'components/film_card_vertical.html' with film=film %}
+                {% endfor %}
+            </div>
+        {% endif %}
+        {% if films_screenwriter %}
+            <h2 class="mb-3 header-5 font-weight-medium">Screenplay of</h2>
+            <div style="left: 0; right: 0" class="position-absolute gallery-scroll mx-auto">
+                {% for film in films_screenwriter %}
+                    {% include 'components/film_card_vertical.html' with film=film %}
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
