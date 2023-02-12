@@ -26,4 +26,4 @@ class Genre(models.Model):
     )
 
     def __str__(self):
-        return f"{self.genre}"
+        return f"{self.genre.capitalize().replace('_', '')}"
