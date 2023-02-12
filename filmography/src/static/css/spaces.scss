@@ -1,30 +1,29 @@
 $spaces: (
-	'n10': -64px,
-	'n9': -56px,
-	'n8': -48px,
-	'n7': -40px,
-	'n6': -32px,
-	'n5': -24px,
-	'n4': -16px,
-	'n3': -12px,
-	'n2': -8px,
-	'n1': -4px,
+	'10': 64px,
+	'9': 56px,
+	'8': 48px,
+	'7': 40px,
+	'6': 32px,
+	'5': 24px,
+	'4': 16px,
+	'3': 12px,
+	'2': 8px,
+	'1': 4px,
 	'auto': auto,
 	'0': 0,
-	'1': 4px,
-	'2': 8px,
-	'3': 12px,
-	'4': 16px,
-	'5': 24px,
-	'6': 32px,
-	'7': 40px,
-	'8': 48px,
-	'9': 56px,
-	'10': 64px,
+	'n1': -4px,
+	'n2': -8px,
+	'n3': -12px,
+	'n4': -16px,
+	'n5': -24px,
+	'n6': -32px,
+	'n7': -40px,
+	'n8': -48px,
+	'n9': -56px,
+	'n10': -64px,
 );
 
 $sides: (
-	'a': '',
 	'x': '-inline',
 	'y': '-block',
 	't': '-top',
@@ -32,6 +31,16 @@ $sides: (
 	'b': '-bottom',
 	'l': '-left',
 );
+
+@each $name, $space in $spaces {
+	.ma-#{$name} {
+		margin: $space;
+	}
+
+	.pa-#{$name} {
+		padding: $space;
+	}
+}
 
 @each $name, $space in $spaces {
 	@each $abbr, $side in $sides {

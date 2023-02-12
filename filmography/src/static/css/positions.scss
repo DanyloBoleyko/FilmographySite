@@ -51,6 +51,11 @@ $flex-align: (
 	flex-wrap: nowrap;
 }
 
+.flex-wrap {
+	@extend %flex;
+	flex-wrap: wrap;
+}
+
 .flex-grow-1 {
 	flex-grow: 1;
 }

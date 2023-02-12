@@ -1,0 +1,7 @@
+<div class="flex flex-wrap ma-n1 {{ class|default:"" }}">
+    {% for genre in genres %}
+        <div class="pa-1 {{ item_class|default:"" }}">
+            <button class="chip border--dirty-white">{{ genre }}</button>
+        </div>
+    {% endfor %}
+</div>

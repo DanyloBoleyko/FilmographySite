@@ -83,11 +83,7 @@
         {% for paragraph in film.description_as_list %}
             <p class="mb-3 body-2 text-indent text-justify">{{ paragraph }}</p>
         {% endfor %}
-        <div class="flex mb-3">
-            {% for genre in film.genres.all %}
-                <button class="chip border--dirty-white">{{ genre.genre }}</button>
-            {% endfor %}
-        </div>
+        {% include "components/genre_list.html" with genres=film.genres.all class="mb-3" item_class="pl-0 pr-2" %}
         <hr class="my-4">
         <h2 class="mb-3 header-5 text-indent font-weight-medium">Plot</h2>
         {% for paragraph in film.plot_as_list %}
