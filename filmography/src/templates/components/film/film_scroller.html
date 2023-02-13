@@ -1,0 +1,5 @@
+<div style="left: calc(var(--page-width-expanded) / -10); right: 0" class="position-relative gallery-scroll mx-auto">
+    {% for film in films %}
+        {% include 'components/film/film_card_vertical.html' with film=film %}
+    {% endfor %}
+</div>

@@ -6,11 +6,12 @@
 
     <div class="mb-4">
         <div class="float-left flex-col mr-5 mb-4" style="max-width: 250px">
-            <img src="{{ film.poster.url|default:"" }}"
+            {% include "components/image.html" with class="fit-cover mb-4 rounded-2 border--dirty-white" file=film.poster width="225px" height="325px" %}
+            {% comment %}<img src="{{ film.poster.url|default:"" }}"
                  alt="Poster of {{ film.name|default:"No title" }}"
                  class="mb-4 fit-cover rounded-2 border--dirty-white"
                  style="height: 375px"
-            >
+            >{% endcomment %}
             <div class="grid caption" style="grid-template-columns: 90px 1fr; gap: 12px">
                 <strong class="font-weight-bold">Directed by</strong>
                 {% if film.directors.all %}

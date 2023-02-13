@@ -1,0 +1,31 @@
+<div class="position-relative overflow-hidden snowy-white {{ class }}"
+     style="width: {{ width|default:"100%" }}; height: {{ height|default:"auto" }}"
+>
+    {% if file %}
+        <img src="{{ file.url|default:"" }}"
+             onerror="this.style.opacity='0'"
+             onload="this.style.opacity='1'"
+             class="fit-cover"
+             style="opacity: 0; transition: opacity .3s"
+             alt=""
+        >
+    {% endif %}
+    <div class="image-loading" style="display: none"></div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const images = document.getElementsByTagName("img")
+        for (let i = 0; i < images.length; i++) {
+            images[i].addEventListener("load", function () {
+                this.nextElementSibling.style.display = "none"
+            });
+            images[i].addEventListener("error", function () {
+                this.nextElementSibling.style.display = "none"
+            });
+            if (!images[i].complete) {
+                images[i].parentElement.querySelector(".image-loading").style.display = "block"
+            }
+        }
+    })
+</script>
