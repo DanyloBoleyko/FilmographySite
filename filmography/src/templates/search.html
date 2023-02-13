@@ -1,0 +1,22 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+    <h1 class="font-weight-bold serif">Films</h1>
+    <hr class="mb-6">
+
+    {% for film in films %}
+        {% include "components/film/film_card.html" with film=film class="mb-4" %}
+    {% endfor %}
+
+    {% for director in directors %}
+        {{ director }}
+    {% endfor %}
+
+    {% for actor in actors %}
+        {{ actor }}
+    {% endfor %}
+
+    {% for actor in voice_actors %}
+        {{ actor }}
+    {% endfor %}
+{% endblock %}
