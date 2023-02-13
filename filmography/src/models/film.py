@@ -12,6 +12,8 @@ class Film(models.Model):
     directors = models.ManyToManyField('Human', related_name='director', blank=True)
     actors = models.ManyToManyField('Human', related_name='actor', blank=True)
     voice_actors = models.ManyToManyField('Human', related_name='voice_actor', blank=True)
+    story_writers = models.ManyToManyField('Human', related_name='story_writer', blank=True)
+    musicians = models.ManyToManyField('Human', related_name='musician', blank=True)
     screenwriters = models.ManyToManyField('Human', related_name='screenwriter', blank=True)
     poster = models.ImageField(blank=True, upload_to="photos/films/%Y-%m-%d/")
     genres = models.ManyToManyField('Genre', blank=True)

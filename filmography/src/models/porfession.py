@@ -2,7 +2,6 @@ from django.db import models
 
 
 class Professions(models.TextChoices):
-    NONE = 'undefined'
     ACTOR = 'actor'
     VOICE_ACTOR = 'voice_actor'
     DIRECTOR = 'director'
@@ -15,8 +14,7 @@ class Professions(models.TextChoices):
 class Profession(models.Model):
     profession = models.CharField(
         max_length=255,
-        choices=Professions.choices,
-        default=Professions.NONE,
+        choices=Professions.choices
     )
 
     def __str__(self):

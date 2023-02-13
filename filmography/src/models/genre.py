@@ -2,7 +2,6 @@ from django.db import models
 
 
 class Genres(models.TextChoices):
-    NONE = 'undefined'
     ACTION = 'action'
     ADVENTURE = 'adventure'
     COMEDY = 'comedy'
@@ -21,8 +20,7 @@ class Genres(models.TextChoices):
 class Genre(models.Model):
     genre = models.CharField(
         max_length=255,
-        choices=Genres.choices,
-        default=Genres.NONE,
+        choices=Genres.choices
     )
 
     def __str__(self):
