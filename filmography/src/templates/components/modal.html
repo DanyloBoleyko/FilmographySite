@@ -1,0 +1,78 @@
+<div id="{{ id }}" class="modal-wrapper modal-hidden display-none position-fixed"
+     style="top: 0; left: 0; width: 100vw; height: 100vh; z-index: 20"
+     tabindex="-1"
+     aria-hidden="true"
+     role="dialog"
+     aria-labelledby="{{ id }}--label"
+>
+    <div class="modal-background justify-center align-center" style="height: 100%">
+        <section class="modal position-relative white black--text ma-n4 rounded-3"
+                 style="z-index: 1"
+        >
+            <div class="pa-4 justify-between align-center">
+                <h1 id="{{ id }}--label" class="header-5 font-weight-bold">{{ title }}</h1>
+                <button class="icon-btn btn-light black--text ml-4" onclick="closeModal('{{ id }}')">
+                    {% include "components/icons/close_icon.html" with size=16 stroke_width=2 %}
+                </button>
+            </div>
+            <hr class="my-n1">
+            <div class="pa-4 py-5">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </section>
+    </div>
+</div>
+
+<script>
+    function openModal(id) {
+        toggleModal(id, true)
+    }
+
+    function closeModal(id) {
+        toggleModal(id, false)
+    }
+
+    function toggleModal(id, open = undefined) {
+        const modal = document.getElementById(id)
+        if (!modal) return console.error(`Modal with id "${id}" not found`)
+
+        if (open === undefined) {
+            open = modal.classList.contains('modal-hidden')
+        }
+
+        const body = document.querySelector('body')
+        if (open) {
+            modal.classList.toggle('display-none', !open)
+
+            setTimeout(() => {
+                modal.classList.toggle('modal-hidden', !open)
+            })
+
+            body.style.top = `-${window.scrollY}px`;
+            body.classList.toggle('disable-scroll', open)
+        } else {
+            modal.classList.toggle('modal-hidden', !open)
+
+            setTimeout(() => {
+                modal.classList.toggle('display-none', !open)
+            }, 300)
+
+            const scrollY = document.body.style.top;
+            body.classList.toggle('disable-scroll', open)
+            body.style.top = '';
+            window.scrollTo(0, parseInt(scrollY || '0') * -1);
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const id = '{{ id }}'
+        const modal = document.getElementById(id)
+        if (!modal) return
+        modal.addEventListener('pointerdown', e => {
+            if (e.target.classList.contains('modal-background') && e.target.closest(`#${id}`)) {
+                closeModal(id)
+            }
+        })
+    })
+</script>

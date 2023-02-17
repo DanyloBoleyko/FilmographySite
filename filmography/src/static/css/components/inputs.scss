@@ -1,0 +1,32 @@
+input {
+	box-sizing: border-box;
+}
+
+label > .label {
+	display: inline-block;
+	font-size: 16px;
+	line-height: 1;
+	letter-spacing: .4px;
+	margin-bottom: 8px;
+}
+
+input.text-field {
+	outline: transparent solid 2px;
+	outline-offset: 2px;
+	border-radius: 2px;
+
+	background-color: var(--snowy-white);
+
+	width: 100%;
+	padding-block: 4px;
+	padding-inline: 12px;
+
+	font-size: 16px;
+	line-height: 1.5;
+	letter-spacing: .4px;
+
+	&:focus-within {
+		outline: var(--black) solid 2px;
+		outline-offset: 2px;
+	}
+}

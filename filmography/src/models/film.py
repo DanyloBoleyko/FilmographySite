@@ -1,6 +1,7 @@
 from django.db import models
 
 from src.fields.large_text_field import LargeTextField
+from src.utils.url_friendly import url_friendly
 
 
 class Film(models.Model):
@@ -26,6 +27,9 @@ class Film(models.Model):
 
     def __str__(self):
         return f"{self.name}"
+
+    def key(self):
+        return url_friendly(self.name)
 
     def description_as_list(self):
         return [s for s in self.description.split('\n') if s.rstrip()]

@@ -90,5 +90,13 @@
         {% for paragraph in film.plot_as_list %}
             <p class="mb-4 body-2 text-indent text-justify">{{ paragraph }}</p>
         {% endfor %}
+        {% if franchise %}
+            <hr class="my-4">
+            <div class="justify-between align-baseline">
+                <h2 class="mb-3 header-5 text-indent font-weight-medium">Franchise</h2>
+                <a href="{% url "franchise_details" key=franchise.id %}" class="link">Details</a>
+            </div>
+            {% include 'components/film/film_scroller.html' with films=franchise.chronology.all %}
+        {% endif %}
     </div>
 {% endblock %}

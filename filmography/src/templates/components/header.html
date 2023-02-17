@@ -1,4 +1,4 @@
-<header class="main-header focus-light select-none border-b--gray align-center position-sticky black pa-6 white--text"
+<header class="main-header focus-light border-b--gray align-center position-sticky black pa-6 white--text"
         style="top: 0"
 >
     <a class="d-flex rounded-2 align-center serif header-5 text-decoration-none white--text"
@@ -22,7 +22,7 @@
         {% include "components/icons/search_icon.html" with class="header-btn ma-n3 pa-3 cursor-pointer" %}
     </label>
 
-    <a class="header-link align-center rounded-2 py-3 px-4" href="#">
+    <a class="header-link cursor-pointer align-center rounded-2 py-3 px-4" onclick="toggleModal('auth-modal')">
         {% include "components/icons/account_icon.html" with class="mr-2" %}
         Profile
     </a>

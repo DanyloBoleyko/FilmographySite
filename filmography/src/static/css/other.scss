@@ -21,6 +21,10 @@ $overflows: (
 	@include user-select(none);
 }
 
+.select-init {
+	@include user-select(initial);
+}
+
 .fit-cover {
 	object-fit: cover;
 }

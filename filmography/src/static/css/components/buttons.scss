@@ -1,10 +1,10 @@
-button.btn, a.btn {
+button.btn, a.btn, button.icon-btn, a.icon-btn {
 	display: block;
 	text-decoration: none;
 	text-align: center;
 
-	background-color: var(--black);
-	color: var(--white);
+	background-color: var(--background, var(--black));
+	color: var(--color, var(--white));
 
 	border-radius: 2px;
 
@@ -20,18 +20,34 @@ button.btn, a.btn {
 	transition: background-color .2s, color .2s, transform .2s;
 
 	&:hover {
-		background-color: var(--dark-gray);
+		background-color: var(--background-hover, var(--dark-gray));
 	}
 
 	&:active {
 		transform: scale(var(--btn-push-scale));
-		background-color: var(--black);
+		background-color: var(--background-active, var(--black));
+	}
+
+	&.icon-btn {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: 8px;
+		aspect-ratio: 1 / 1;
+		min-width: 16px;
+	}
+
+	&.btn-light {
+		--background: var(--white);
+		--background-hover: var(--snowy-white);
+		--background-active: var(--snowy-white);
+		--color: var(--black);
 	}
 }
 
 a.link {
 	text-decoration: none;
-	color: var(--primary-dark);
+	color: var(--color, var(--primary-dark));
 	position: relative;
 	@include transition(color .2s);
 
@@ -46,11 +62,12 @@ a.link {
 		transform: scaleX(0);
 		transform-origin: center;
 		background-color: currentColor;
-		@include transition(transform .2s cubic-bezier(.47,1.64,.41,.8));
+		@include transition(transform .2s cubic-bezier(.47, 1.64, .41, .8));
 	}
 
 	&:hover {
-		color: var(--primary);
+		color: var(--color, var(--primary));
+
 		&:after {
 			transform: scaleX(1);
 		}

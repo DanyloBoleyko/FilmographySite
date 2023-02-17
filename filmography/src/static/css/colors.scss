@@ -61,3 +61,12 @@ hr {
 	border-bottom-width: 1px;
 	border-bottom-color: var(--dirty-white);
 }
+
+html {
+	color-scheme: dark;
+	background-color: white;
+}
+
+body, .modal {
+	color-scheme: light !important;
+}

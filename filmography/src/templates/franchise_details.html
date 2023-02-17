@@ -1,0 +1,22 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+    <h1 class="font-weight-bold serif">{{ franchise.name }}</h1>
+    <hr class="mb-6">
+
+    <div class="mb-4">
+        <h2 class="mb-3 header-5 font-weight-medium hidden">Description</h2>
+        {% for paragraph in franchise.description_as_list %}
+            <p class="mb-3 body-2 text-indent text-justify">{{ paragraph }}</p>
+        {% endfor %}
+        {% include "components/genre_list.html" with genres=film.genres.all class="mb-3" item_class="pl-0 pr-2" %}
+        <hr class="my-4">
+        <h2 class="mb-3 header-5 text-indent font-weight-medium">Plot</h2>
+        {% for paragraph in franchise.plot_as_list %}
+            <p class="mb-4 body-2 text-indent text-justify">{{ paragraph }}</p>
+        {% endfor %}
+        <hr class="my-4">
+        <h2 class="mb-3 header-5 text-indent font-weight-medium">Films in chronology</h2>
+        {% include 'components/film/film_scroller.html' with films=franchise.chronology.all %}
+    </div>
+{% endblock %}

@@ -1,6 +1,7 @@
 from django.db import models
 
 from src.fields.large_text_field import LargeTextField
+from src.utils.url_friendly import url_friendly
 
 
 class Human(models.Model):
@@ -15,6 +16,9 @@ class Human(models.Model):
 
     def __str__(self):
         return f'{self.first_name} {self.last_name}'
+
+    def key(self):
+        return url_friendly(f'{self.first_name} {self.last_name}')
 
     def biography_as_list(self):
         return [s for s in self.biography.split('\n') if s.rstrip()]
