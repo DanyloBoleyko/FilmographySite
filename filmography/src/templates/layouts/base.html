@@ -6,7 +6,11 @@
     <meta charset="UTF-8">
     <link href="{% sass_src 'css/main.scss' %}" rel="stylesheet" type="text/css"/>
     <link rel="icon" href="{% static 'logo.svg' %}" type="image/svg+xml">
-    <title>{{ title|default:"FILMOGRAPHY" }}</title>
+    <title>
+        {% block title %}
+            {{ title|default:"FILMOGRAPHY" }}
+        {% endblock %}
+    </title>
 </head>
 <body class="black--text white">
     {% include "components/modals/auth_modal.html" with id="auth-modal" title="Auth" %}
@@ -16,7 +20,9 @@
     {% endblock %}
 
     {% block page %}
-        <div class="background-pattern focus-dark justify-center" style="height: fit-content">
+        <div class="background-pattern focus-dark justify-center"
+             style="height: fit-content; min-height: calc(100vh - var(--header-height, 0))"
+        >
             <div class="main-content pa-6">
                 {% block content %}
                 {% endblock %}

@@ -1,5 +1,5 @@
 <header class="main-header focus-light border-b--gray align-center position-sticky black pa-6 white--text"
-        style="top: 0"
+        style="top: 0; height: var(--header-height); box-sizing: border-box"
 >
     <a class="d-flex rounded-2 align-center serif header-5 text-decoration-none white--text"
        href="{% url "home" %}"
@@ -22,8 +22,21 @@
         {% include "components/icons/search_icon.html" with class="header-btn ma-n3 pa-3 cursor-pointer" %}
     </label>
 
-    <a class="header-link cursor-pointer align-center rounded-2 py-3 px-4" onclick="toggleModal('auth-modal')">
+
+    <a href="{% if request.user.is_authenticated %}
+                {% url 'profile' %}
+            {% else %}
+                {% url 'login' %}?next={{ request.path }}
+            {% endif %}"
+       class="header-link cursor-pointer align-center rounded-2 py-3 px-4"
+    >
+        {#onclick="toggleModal('auth-modal')"#}
         {% include "components/icons/account_icon.html" with class="mr-2" %}
-        Profile
+        {% if request.user.is_authenticated %}
+            Profile
+        {% else %}
+            Log in
+        {% endif %}
+
     </a>
 </header>

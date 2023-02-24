@@ -1,0 +1,29 @@
+{% extends 'layouts/base.html' %}
+
+{% block page %}
+    <div class="background-pattern focus-dark justify-center position-relative"
+         style="min-height: calc(100vh - var(--header-height, 0))"
+    >
+        <div class="position-absolute justify-center align-center" style="height: 100%">
+            <div class="white rounded-3 border--snowy-white pa-6" style="z-index: 1; box-shadow: 0 0 64px rgba(0, 0, 0, .08)">
+                <form style="max-width: 256px"
+                      method="post"
+                      action="{% url 'login' %}"
+                >
+                    {% csrf_token %}
+                    <label>
+                        <span class="label">Username:</span>
+                        <input class="text-field mb-4" type="text" name="username" required>
+                        <span class="text-danger"></span>
+                    </label>
+                    <label>
+                        <span class="label">Password:</span>
+                        <input class="text-field" type="password" name="password" required>
+                        <span class="text-danger"></span>
+                    </label>
+                    <button type="submit" class="btn mt-6" style="width: 100%">Log in</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

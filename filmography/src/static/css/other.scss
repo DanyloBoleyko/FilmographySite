@@ -37,6 +37,7 @@ $rounded: (
 	'1': 2px,
 	'2': 4px,
 	'3': 6px,
+	'circle': 50%,
 );
 
 @each $abbr, $radius in $rounded {

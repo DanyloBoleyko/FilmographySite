@@ -5,9 +5,11 @@ from src.models.franchise import Franchise
 from src.models.genre import Genre
 from src.models.human import Human
 from src.models.porfession import Profession
+from src.models.profile import Profile
 
 admin.site.register(Film)
 admin.site.register(Franchise)
 admin.site.register(Genre)
 admin.site.register(Human)
 admin.site.register(Profession)
+admin.site.register(Profile)
