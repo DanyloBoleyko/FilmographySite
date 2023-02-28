@@ -1,72 +1,55 @@
 from django.test import TestCase
 
 from src.models.film import Film
-from src.models.genre import Genre
+from src.models.genre import Genre, Genres
 from src.models.human import Human
 
 
 class FilmTestCase(TestCase):
     def setUp(self):
-        self.producer = Human.objects.create(name='John Producer')
-        self.director = Human.objects.create(name='Jane Director')
-        self.actor = Human.objects.create(name='Alice Actor')
-        self.voice_actor = Human.objects.create(name='Bob Voice Actor')
-        self.story_writer = Human.objects.create(name='Charlie Story Writer')
-        self.musician = Human.objects.create(name='David Musician')
-        self.screenwriter = Human.objects.create(name='Eve Screenwriter')
-        self.genre = Genre.objects.create(name='Action')
-        self.film = Film.objects.create(name='Test Film', rating=5.0)
+        self.genre1 = Genre.objects.create(genre=Genres.ACTION)
+        self.genre2 = Genre.objects.create(genre=Genres.DRAMA)
 
-    def test_film_name_capitalized(self):
-        self.film.name = 'test film'
-        with self.assertRaises(AssertionError):
+        self.producer1 = Human.objects.create(first_name='John', last_name='Doe')
+        self.producer2 = Human.objects.create(first_name='Jane', last_name='Doe')
+        self.director = Human.objects.create(first_name='Bob', last_name='Smith')
+        self.actor = Human.objects.create(first_name='Alice', last_name='Johnson')
+        self.voice_actor = Human.objects.create(first_name='Tom', last_name='Hanks')
+
+        self.film = Film.objects.create(
+            name='The Shawshank Redemption',
+            description='Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.',
+            plot='Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.',
+            rating=9.3,
+            age_rating=16,
+            duration=142,
+            announce_date='1994-09-10',
+            release_date='1994-10-14',
+        )
+        self.film.producers.set([self.producer1, self.producer2])
+        self.film.directors.set([self.director])
+        self.film.actors.set([self.actor])
+        self.film.voice_actors.set([self.voice_actor])
+        self.film.story_writers.set([self.director])
+        self.film.musicians.set([self.actor])
+        self.film.screenwriters.set([self.director])
+        self.film.genres.set([self.genre1, self.genre2])
+
+    def test_film_save(self):
+        self.film.name = 'the shawshank redemption'
+        with self.assertRaisesMessage(AssertionError, 'Film name must be capitalized'):
             self.film.save()
 
-    def test_film_producers(self):
-        self.film.producers.add(self.producer)
-        self.assertIn(self.producer, self.film.producers.all())
-
-    def test_film_directors(self):
-        self.film.directors.add(self.director)
-        self.assertIn(self.director, self.film.directors.all())
-
-    def test_film_actors(self):
-        self.film.actors.add(self.actor)
-        self.assertIn(self.actor, self.film.actors.all())
-
-    def test_film_voice_actors(self):
-        self.film.voice_actors.add(self.voice_actor)
-        self.assertIn(self.voice_actor, self.film.voice_actors.all())
-
-    def test_film_story_writers(self):
-        self.film.story_writers.add(self.story_writer)
-        self.assertIn(self.story_writer, self.film.story_writers.all())
-
-    def test_film_musicians(self):
-        self.film.musicians.add(self.musician)
-        self.assertIn(self.musician, self.film.musicians.all())
-
-    def test_film_screenwriters(self):
-        self.film.screenwriters.add(self.screenwriter)
-        self.assertIn(self.screenwriter, self.film.screenwriters.all())
-
-    def test_film_genres(self):
-        self.film.genres.add(self.genre)
-        self.assertIn(self.genre, self.film.genres.all())
-
     def test_film_key(self):
-        self.assertEqual(self.film.key(), 'test-film')
+        self.assertEqual(self.film.key(), 'the-shawshank-redemption')
 
     def test_film_description_as_list(self):
-        self.film.description = 'Line 1\nLine 2\n\nLine 3\n'
-        self.assertEqual(self.film.description_as_list(), ['Line 1', 'Line 2', 'Line 3'])
+        self.assertEqual(self.film.description_as_list(), [
+            'Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.'])
 
     def test_film_plot_as_list(self):
-        self.film.plot = 'Line 1\nLine 2\n\nLine 3\n'
-        self.assertEqual(self.film.plot_as_list(), ['Line 1', 'Line 2', 'Line 3'])
+        self.assertEqual(self.film.plot_as_list(), [
+            'Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.'])
 
-    def test_film_starring_list(self):
-        self.film.voice_actors.add(self.voice_actor)
-        self.film.actors.add(self.actor)
-        self.assertIn(self.voice_actor, self.film.starring_list())
-        self.assertIn(self.actor, self.film.starring_list())
+    def test_film_str(self):
+        self.assertEqual(str(self.film), 'The Shawshank Redemption')
