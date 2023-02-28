@@ -20,7 +20,8 @@ class Genres(models.TextChoices):
 class Genre(models.Model):
     genre = models.CharField(
         max_length=255,
-        choices=Genres.choices
+        choices=Genres.choices,
+        unique=True
     )
 
     def __str__(self):

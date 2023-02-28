@@ -17,6 +17,11 @@ class Human(models.Model):
     def __str__(self):
         return f'{self.first_name} {self.last_name}'
 
+    def save(self, *args, **kwargs):
+        assert self.first_name[0].isupper(), 'Person first name must be capitalized'
+        assert self.last_name[0].isupper(), 'Person last name must be capitalized'
+        super(Human, self).save(*args, **kwargs)
+
     def key(self):
         return url_friendly(f'{self.first_name} {self.last_name}')
 

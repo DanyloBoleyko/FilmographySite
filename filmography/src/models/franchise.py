@@ -14,6 +14,10 @@ class Franchise(models.Model):
     def __str__(self):
         return f"{self.name}"
 
+    def save(self, *args, **kwargs):
+        assert self.name[0].isupper(), 'Franchise name must be capitalized'
+        super(Franchise, self).save(*args, **kwargs)
+
     def key(self):
         return url_friendly(self.name)
 

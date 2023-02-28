@@ -14,7 +14,8 @@ class Professions(models.TextChoices):
 class Profession(models.Model):
     profession = models.CharField(
         max_length=255,
-        choices=Professions.choices
+        choices=Professions.choices,
+        unique=True
     )
 
     def __str__(self):

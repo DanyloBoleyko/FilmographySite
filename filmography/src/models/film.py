@@ -28,6 +28,10 @@ class Film(models.Model):
     def __str__(self):
         return f"{self.name}"
 
+    def save(self, *args, **kwargs):
+        assert self.name[0].isupper(), 'Film name must be capitalized'
+        super(Film, self).save(*args, **kwargs)
+
     def key(self):
         return url_friendly(self.name)
 
